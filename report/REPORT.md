@@ -96,9 +96,9 @@ Lab hôm nay chỉ **xem prediction**. Chuỗi dưới đây là vòng đời pr
 
 | Tác vụ | Ground truth trông như thế nào? (đơn vị nhãn) | Lỗi hoặc chỗ khó quyết định bạn thấy trên ảnh/JSON | Annotator làm gì? | Reviewer xem gì? |
 | --- | --- | --- | --- | --- |
-| Phân loại ảnh | 1 nhãn danh mục duy nhất cho cả ảnh (vd: `cab`, `class_id=468`). | Ảnh `traffic` có nhiều loại xe khác nhau (taxi, minibus, car), mô hình chỉ gán `cab` với score thấp 0.51; ảnh `kitchen` mô hình lại gán nhãn `gong` (score 0.42) do nhầm cái chảo/khay treo. | Quan sát toàn bộ bức ảnh và chọn đúng 1 nhãn theo quy tắc đối tượng chính trong guideline. | Kiểm tra xem nhãn được chọn có nằm trong taxonomy quy định và có đúng quy tắc ưu tiên chủ thể hay không. |
-| Phát hiện vật thể | Danh sách các hộp toạ độ pixel `[x_min, y_min, x_max, y_max]` kèm tên lớp cho từng vật thể. | Người ở góc trái `kitchen` bị mép ảnh cắt (`x_min=0.12`), các chiếc bát nhỏ và cốc ở xa có score thấp (~0.38-0.45) dễ bị sót hộp. | Kéo hộp chữ nhật ôm sát từng vật thể nhìn thấy, đánh dấu cờ nếu vật bị cắt mép hoặc che khuất. | Kiểm tra độ khít của các bounding box, rà soát xem có bỏ sót vật thể nhỏ nào không và xoá các box thừa. |
-| Instance segmentation | Tập hợp các toạ độ điểm khép kín `polygon_xy` tạo thành mask độc lập cho từng cá thể (`instance_id`). | Người `kitchen-001` có viền phức tạp (348 điểm), phần chân và thân chạm vào tủ/bàn bếp khó tách bạch viền chính xác; thìa/dĩa nhỏ rất khó phân đoạn. | Dùng công cụ chấm điểm đa giác bao sát từng đường nét của từng cá thể đối tượng riêng lẻ. | Soi kỹ đường viền mask xem có bị lẹm vào nền hoặc chồng chéo sai lệch giữa các vật thể hay không. |
+| Phân loại ảnh | 1 nhãn danh mục duy nhất cho cả ảnh (vd: cab, class_id=468). | Ảnh traffic có nhiều loại xe khác nhau (taxi, minibus, car), mô hình chỉ gán `cab` với score thấp 0.51; ảnh kitchen mô hình lại gán nhãn gong (score 0.42) do nhầm cái chảo/khay treo. | Quan sát toàn bộ bức ảnh và chọn đúng 1 nhãn theo quy tắc đối tượng chính trong guideline. | Kiểm tra xem nhãn được chọn có nằm trong taxonomy quy định và có đúng quy tắc ưu tiên chủ thể hay không. |
+| Phát hiện vật thể | Danh sách các hộp toạ độ pixel [x_min, y_min, x_max, y_max] kèm tên lớp cho từng vật thể. | Người ở góc trái kitchen bị mép ảnh cắt (x_min=0.12), các chiếc bát nhỏ và cốc ở xa có score thấp (~0.38-0.45) dễ bị sót hộp. | Kéo hộp chữ nhật ôm sát từng vật thể nhìn thấy, đánh dấu cờ nếu vật bị cắt mép hoặc che khuất. | Kiểm tra độ khít của các bounding box, rà soát xem có bỏ sót vật thể nhỏ nào không và xoá các box thừa. |
+| Instance segmentation | Tập hợp các toạ độ điểm khép kín polygon_xy tạo thành mask độc lập cho từng cá thể (instance_id). | Người kitchen-001 có viền phức tạp (348 điểm), phần chân và thân chạm vào tủ/bàn bếp khó tách bạch viền chính xác; thìa/dĩa nhỏ rất khó phân đoạn. | Dùng công cụ chấm điểm đa giác bao sát từng đường nét của từng cá thể đối tượng riêng lẻ. | Soi kỹ đường viền mask xem có bị lẹm vào nền hoặc chồng chéo sai lệch giữa các vật thể hay không. |
 
 ## 5. An toàn dữ liệu
 
@@ -119,6 +119,6 @@ Kiểm tra trên GitHub trong thư mục `report/`:
 - [x] `day1_lab_outputs/visuals/classification_top5.png`
 - [x] `day1_lab_outputs/visuals/detection_predictions.png`
 - [x] `day1_lab_outputs/visuals/segmentation_prediction.png`
-- [ ] Ô validation cuối notebook báo `PASS`
+- [x] Ô validation cuối notebook báo `PASS`
 - [x] Không có họ tên, MSSV hoặc dữ liệu nhạy cảm trong báo cáo/output
-- [ ] Đã nộp **link repository** trên LMS
+- [X] Đã nộp **link repository** trên LMS
